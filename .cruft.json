@@ -1,0 +1,35 @@
+{
+  "template": "git@github.com:FAIRmat-NFDI/cookiecutter-nomad-plugin.git",
+  "commit": "b67d40d4d5d4be4a639baa56ecf9af41f1680830",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "full_name": "Lukas Pielsticker",
+      "email": "lukas.pielsticker@physik.hu-berlin.de",
+      "github_username": "FAIRmat-NFDI",
+      "plugin_name": "nomad-north-mpes-igor",
+      "module_name": "nomad_north_mpes_igor",
+      "short_description": "NOMAD NORTH plugin for Igor Pro on the mpes NORTH tool via Wine (requires a local, licensed Igor Wine prefix to build)",
+      "version": "0.1.0",
+      "license": "MIT",
+      "include_schema_package": false,
+      "include_normalizer": false,
+      "include_parser": false,
+      "include_app": false,
+      "include_example_uploads": false,
+      "include_action": false,
+      "include_api": false,
+      "include_north_tools": true,
+      "north_tool_name": "mpes_igor",
+      "include_dashboard": false,
+      "include_citation_file": true,
+      "_copy_without_render": [
+        "*.html",
+        "*.png"
+      ],
+      "_template": "git@github.com:FAIRmat-NFDI/cookiecutter-nomad-plugin.git",
+      "_commit": "b67d40d4d5d4be4a639baa56ecf9af41f1680830"
+    }
+  },
+  "directory": null
+}
