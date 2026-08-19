@@ -128,3 +128,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Locally-supplied, licensed Igor Wine prefix (never committed — see README)
+src/nomad_north_mpes_igor/north_tools/mpes_igor/igor-wine/

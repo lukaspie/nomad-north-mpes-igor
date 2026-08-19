@@ -17,9 +17,9 @@ mpes_igor_north_tool = NORTHTool(
     image_pull_policy='Always',
     default_url='/desktop',
     maintainer=[
-        {'name': 'Lukas Pielsticker','email': 'lukas.pielsticker@physik.hu-berlin.de'},
-        {'name': 'Laurenz Rettig', 'email': 'l.rettig@rptu.de'}
-        ],
+        {'name': 'Lukas Pielsticker', 'email': 'lukas.pielsticker@physik.hu-berlin.de'},
+        {'name': 'Laurenz Rettig', 'email': 'l.rettig@rptu.de'},
+    ],
     mount_path='/home/jovyan',
     path_prefix='lab/tree',
     privileged=False,

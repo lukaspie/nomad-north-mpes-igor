@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Igor Pro
+Comment=
+Exec=wine /home/jovyan/.wine/drive_c/Program\ Files/WaveMetrics/Igor\ Pro\ 9\ Folder/IgorBinaries_x64/Igor64.exe
+Icon=/home/jovyan/Igor64.ico
+Path=/home/jovyan
+Terminal=false
+StartupNotify=false

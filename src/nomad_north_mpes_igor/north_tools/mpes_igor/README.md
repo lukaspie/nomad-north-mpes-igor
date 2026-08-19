@@ -1,46 +1,42 @@
-# mpes_igor - NORTH tool
+# `mpes_igor` - NORTH tool
 
-This directory contains the configuration and a minimal Dockerfile template for defining a NORTH (NOMAD Remote Tools Hub) tool.
+This directory contains the Dockerfile and desktop-integration config for the `mpes-igor` NORTH
+tool: Wine + Igor Pro layered on top of the `pynxtools-mpes` NORTH tool image.
 
-## Quick start
+## Base image
 
-The mpes_igor NORTH tool provides a containerized environment defined in `NORTHtool` definition, `NORTHToolEntryPoint`, and Dockerfile.
+Builds `FROM ghcr.io/fairmat-nfdi/pynxtools-mpes:main` — the published `pynxtools-mpes` NORTH
+tool image, not `nomad-north-jupyter`/`nomad-north-desktop-base` directly. That image already
+provides the full mpes community-tool stack (sed-processor, specsanalyzer, arpes, silx, ...) on
+top of `nomad-north-desktop-base`; this Dockerfile only adds Wine and Igor.
 
-## Base Image
+## Prerequisite: a local, licensed Igor Wine prefix
 
-This tool uses a pre-built base image that includes the NOMAD NORTH environment. You can choose between two base images:
-
-1. **nomad-north-jupyter** — JupyterLab-based environment
-   - Repository: https://github.com/FAIRmat-NFDI/nomad-north-jupyter
-   - Image: `ghcr.io/fairmat-nfdi/nomad-north-jupyter:main`
-
-2. **nomad-north-desktop-base** — Desktop-based environment
-   - Repository: https://github.com/FAIRmat-NFDI/nomad-north-desktop-base
-   - Image: `ghcr.io/fairmat-nfdi/nomad-north-desktop-base:main`
-
-Select the appropriate base image for your use case. The nomad-north-mpes-igor plugin can be installed on top of your chosen base image during the Docker build process (for this you need to extend the Dockerfile).
-
+Igor Pro is proprietary. This build **requires** a Wine prefix with Igor Pro already installed,
+placed locally at `./igor-wine` (relative to this directory, i.e.
+`src/nomad_north_mpes_igor/north_tools/mpes_igor/igor-wine/`) before running `docker build` —
+it is gitignored and must never be committed. See the top-level
+[README](../../../../README.md#building-the-image) for how to produce it and the full build
+command. There is no automatic CI build for this image.
 
 ## Building and testing
 
-Build the Docker image locally:
-
 ```bash
 docker build -f src/nomad_north_mpes_igor/north_tools/mpes_igor/Dockerfile \
-    -t ghcr.io/fairmat-nfdi/nomad-north-mpes-igor:latest .
+    -t nomad-north-mpes-igor:dev .
 ```
-
-Test the image (for jupyter notebook image):
 
 ```bash
-docker run -p 8888:8888 ghcr.io/fairmat-nfdi/nomad-north-mpes-igor:latest
+docker run -p 8888:8888 nomad-north-mpes-igor:dev
 ```
 
-Access JupyterLab at `http://localhost:8888`.
+Open `http://localhost:8888/desktop` — Igor should appear as a desktop icon, pre-trusted (no
+xfce "untrusted launcher" prompt), alongside the mpes community tools inherited from the base
+image.
 
 ## Documentation
 
-For comprehensive documentation on creating and managing NORTH tools, including detailed about some of the topic e.g.,
+For comprehensive documentation on creating and managing NORTH tools, including:
 
 - Entry point configuration and `NORTHTool` API
 - Docker image structure and best practices

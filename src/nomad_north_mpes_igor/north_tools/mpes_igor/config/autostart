@@ -1,0 +1,9 @@
+#!/bin/bash
+# Make NOMAD's mounted work/uploads directories reachable from inside the Wine Igor
+# environment (Igor's own file dialogs only see paths under the Wine C: drive).
+ln -s /home/jovyan/work /home/jovyan/.wine/drive_c/users/jovyan/Desktop/work
+ln -s /home/jovyan/uploads /home/jovyan/.wine/drive_c/users/jovyan/Desktop/uploads
+
+# Pre-mark the Igor desktop shortcut as trusted, so double-clicking it doesn't trigger
+# xfce's "untrusted launcher" prompt.
+f=/home/jovyan/Desktop/Igor.desktop; gio set -t string $f metadata::xfce-exe-checksum "$(sha256sum $f | awk '{print $1}')"

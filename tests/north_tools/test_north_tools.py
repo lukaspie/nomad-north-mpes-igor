@@ -24,4 +24,6 @@ def test_north_tool_metadata():
 
     assert mpes_igor_north_tool.display_name == 'mpes-igor'
     assert mpes_igor_north_tool.default_url == '/desktop'
-    assert mpes_igor_north_tool.maintainer, 'NORTHTool must list at least one maintainer'
+    assert mpes_igor_north_tool.maintainer, (
+        'NORTHTool must list at least one maintainer'
+    )
