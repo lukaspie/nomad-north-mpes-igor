@@ -24,11 +24,11 @@ WORKDIR "${HOME}"
 
 # ---- Igor Pro (proprietary — never committed) ----
 # Requires a locally-supplied, licensed Igor Wine prefix at build time. Place it at
-# src/nomad_north_mpes_igor/north_tools/mpes_igor/igor-wine (gitignored) before running
+# src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine (gitignored) before running
 # `docker build`. See this package's README for how to produce that prefix.
 # COPY paths are relative to the build context root (package root), not this Dockerfile's
 # own directory — matching the convention used in pynxtools-mpes's own Dockerfile.
-COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/igor-wine "${HOME}/.wine"
+COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine "${HOME}/.wine"
 COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/config/Igor.desktop "${HOME}/Desktop/Igor.desktop"
 COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/config/Igor64.ico "${HOME}/Igor64.ico"
 COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/config/autostart.desktop "${HOME}/.config/autostart/autostart.desktop"

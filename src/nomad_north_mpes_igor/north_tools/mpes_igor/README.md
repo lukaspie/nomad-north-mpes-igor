@@ -13,8 +13,8 @@ top of `nomad-north-desktop-base`; this Dockerfile only adds Wine and Igor.
 ## Prerequisite: a local, licensed Igor Wine prefix
 
 Igor Pro is proprietary. This build **requires** a Wine prefix with Igor Pro already installed,
-placed locally at `./igor-wine` (relative to this directory, i.e.
-`src/nomad_north_mpes_igor/north_tools/mpes_igor/igor-wine/`) before running `docker build` —
+placed locally at `./igor_wine` (relative to this directory, i.e.
+`src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine/`) before running `docker build` —
 it is gitignored and must never be committed. See the top-level
 [README](../../../../README.md#building-the-image) for how to produce it and the full build
 command. There is no automatic CI build for this image.

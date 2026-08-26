@@ -10,11 +10,11 @@ This plugin has no published image (see [Explanation > Why Igor is never committ
 ## Steps
 
 1. **Build a Wine-only placeholder image.** `docker build` still needs *something* at
-   `igor-wine/` for `COPY` to succeed, even though Igor isn't installed yet -- an empty directory
+   `igor_wine/` for `COPY` to succeed, even though Igor isn't installed yet -- an empty directory
    satisfies that:
 
    ```bash
-   mkdir -p src/nomad_north_mpes_igor/north_tools/mpes_igor/igor-wine
+   mkdir -p src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine
    docker build -f src/nomad_north_mpes_igor/north_tools/mpes_igor/Dockerfile \
        -t nomad-north-mpes-igor:wine-only .
    ```
@@ -59,13 +59,13 @@ This plugin has no published image (see [Explanation > Why Igor is never committ
 
    ```bash
    docker ps  # note the container ID for nomad-north-mpes-igor:wine-only
-   rm -rf src/nomad_north_mpes_igor/north_tools/mpes_igor/igor-wine
+   rm -rf src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine
    docker cp <container_id>:/home/jovyan/.wine \
-       src/nomad_north_mpes_igor/north_tools/mpes_igor/igor-wine
+       src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine
    ```
 
 6. **Rebuild.** This is now an ordinary `docker build` -- no more interactive steps. `COPY` picks
-   up the real, licensed Igor installation from `igor-wine/` this time, and bakes it into the
+   up the real, licensed Igor installation from `igor_wine/` this time, and bakes it into the
    image:
 
    ```bash
@@ -75,8 +75,8 @@ This plugin has no published image (see [Explanation > Why Igor is never committ
 
 ## Why two passes
 
-The [Dockerfile](https://github.com/FAIRmat-NFDI/nomad-north-mpes-igor/blob/main/src/nomad_north_mpes_igor/north_tools/mpes_igor/Dockerfile){:target="_blank" rel="noopener"} `COPY`s a directory called `igor-wine/` -- a Wine prefix with Igor Pro already installed inside it -- straight into the image. Docker's `COPY` has no interactive installer step of its own: it only copies files that already exist on your machine before the build starts. So the Igor installation itself can't happen *during* `docker build` the way the WineHQ apt install does -- it has to happen first, in a real running container, the normal way you'd install any Windows program under Wine (double-click the installer, click through it). Only once that's done is
-there anything for `COPY` to pick up. That's what steps 1-5 do: build a container that has Wine but not yet Igor, run it, install Igor inside it like you would on a normal Linux+Wine desktop, then copy the resulting `~/.wine` directory back out to your host so it can become the `igor-wine/` input the real
+The [Dockerfile](https://github.com/FAIRmat-NFDI/nomad-north-mpes-igor/blob/main/src/nomad_north_mpes_igor/north_tools/mpes_igor/Dockerfile){:target="_blank" rel="noopener"} `COPY`s a directory called `igor_wine/` -- a Wine prefix with Igor Pro already installed inside it -- straight into the image. Docker's `COPY` has no interactive installer step of its own: it only copies files that already exist on your machine before the build starts. So the Igor installation itself can't happen *during* `docker build` the way the WineHQ apt install does -- it has to happen first, in a real running container, the normal way you'd install any Windows program under Wine (double-click the installer, click through it). Only once that's done is
+there anything for `COPY` to pick up. That's what steps 1-5 do: build a container that has Wine but not yet Igor, run it, install Igor inside it like you would on a normal Linux+Wine desktop, then copy the resulting `~/.wine` directory back out to your host so it can become the `igor_wine/` input the real
 `COPY` step needs. Step 6 is then an entirely ordinary rebuild.
 
 ## Using the image
@@ -96,5 +96,5 @@ FAIRmat-published image) if you need the image on a machine other than the one y
   (`config/autostart`/`config/Igor.desktop`) before rebuilding.
 - Steps 1-5 only need to be repeated when the Igor installation itself needs to change (a new
   Igor version, a different license). Routine rebuilds of the Dockerfile (picking up Wine
-  version bumps, config changes, etc.) can reuse the same `igor-wine/` prefix as-is -- just
+  version bumps, config changes, etc.) can reuse the same `igor_wine/` prefix as-is -- just
   re-run step 6.

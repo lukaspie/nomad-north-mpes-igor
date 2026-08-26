@@ -88,7 +88,7 @@ Changes that don't touch the Igor-specific steps (e.g. the generic WineHQ instal
 tested against just the Wine layer, without a real Igor installation:
 
 ```console
-mkdir -p src/nomad_north_mpes_igor/north_tools/mpes_igor/igor-wine  # empty placeholder
+mkdir -p src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine  # empty placeholder
 docker build -f src/nomad_north_mpes_igor/north_tools/mpes_igor/Dockerfile \
     -t nomad-north-mpes-igor:dev .
 docker run -p 8888:8888 nomad-north-mpes-igor:dev
