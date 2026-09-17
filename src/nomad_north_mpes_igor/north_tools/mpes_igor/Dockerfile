@@ -42,11 +42,18 @@ WORKDIR "${HOME}"
 
 # ---- Igor Pro (proprietary — never committed) ----
 # Requires a locally-supplied, licensed Igor Wine prefix at build time. Place it at
-# src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine (gitignored) before running
-# `docker build`. See this package's README for how to produce that prefix.
+# local/igor_wine (gitignored) before running `docker build`. See this package's README for how
+# to produce that prefix.
 # COPY paths are relative to the build context root (package root), not this Dockerfile's
 # own directory — matching the convention used in pynxtools-mpes's own Dockerfile.
-COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine "${HOME}/.wine"
+#
+# Deliberately under local/, NOT src/: a real Wine prefix's dosdevices/z: is a symlink to `/`
+# (host root, standard Wine behavior), and setuptools' `where=["src"]` package auto-discovery
+# follows symlinks while walking src/. With this directory under src/, every `uv sync`/editable
+# install ran an unbounded recursive walk of the entire host filesystem through that symlink —
+# not a slow build, one that never finishes. Keep igor_wine/ out of src/ permanently (same
+# issue found and fixed in nomad-north-xps's casa/casa-wine).
+COPY --chown=${NB_UID}:${NB_GID} local/igor_wine "${HOME}/.wine"
 COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/config/Igor.desktop "${HOME}/Desktop/Igor.desktop"
 COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/config/Igor64.ico "${HOME}/Igor64.ico"
 # Uses filenames distinct from nomad-north-desktop-base's own autostart.desktop/

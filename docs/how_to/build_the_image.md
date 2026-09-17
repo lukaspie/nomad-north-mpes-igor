@@ -14,7 +14,7 @@ This plugin has no published image (see [Explanation > Why Igor is never committ
    satisfies that:
 
    ```bash
-   mkdir -p src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine
+   mkdir -p local/igor_wine
    docker build -f src/nomad_north_mpes_igor/north_tools/mpes_igor/Dockerfile \
        -t nomad-north-mpes-igor:wine-only .
    ```
@@ -59,9 +59,9 @@ This plugin has no published image (see [Explanation > Why Igor is never committ
 
    ```bash
    docker ps  # note the container ID for nomad-north-mpes-igor:wine-only
-   rm -rf src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine
+   rm -rf local/igor_wine
    docker cp <container_id>:/home/jovyan/.wine \
-       src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine
+       local/igor_wine
    ```
 
 6. **Rebuild.** This is now an ordinary `docker build` -- no more interactive steps. `COPY` picks

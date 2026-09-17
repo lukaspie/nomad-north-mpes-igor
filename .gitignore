@@ -129,5 +129,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Locally-supplied, licensed Igor Wine prefix (never committed — see README)
-src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine/
+# Locally-supplied, licensed Igor Wine prefix (never committed — see README).
+# Deliberately NOT under src/ — its dosdevices/z: symlinks to `/` (host root), and setuptools'
+# package auto-discovery follows symlinks while walking src/. See mpes_igor/Dockerfile.
+local/igor_wine/

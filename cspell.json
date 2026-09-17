@@ -10,7 +10,7 @@
         "__pycache__",
         "dist",
         "build",
-        "src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine"
+        "local/igor_wine/**"
     ],
   "dictionaryDefinitions": [
     {
