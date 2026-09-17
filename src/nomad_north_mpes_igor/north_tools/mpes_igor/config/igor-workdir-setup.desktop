@@ -7,9 +7,9 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=autostart setup
+Name=igor workdir setup
 Comment=
-Exec="/home/jovyan/.config/autostart/autostart"
+Exec="/home/jovyan/.config/autostart/igor-workdir-setup"
 Icon=
 Path=/home/jovyan
 Terminal=false

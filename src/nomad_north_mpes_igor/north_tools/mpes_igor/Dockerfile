@@ -49,11 +49,15 @@ WORKDIR "${HOME}"
 COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine "${HOME}/.wine"
 COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/config/Igor.desktop "${HOME}/Desktop/Igor.desktop"
 COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/config/Igor64.ico "${HOME}/Igor64.ico"
-COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/config/autostart.desktop "${HOME}/.config/autostart/autostart.desktop"
-COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/config/autostart "${HOME}/.config/autostart/autostart"
+# Uses filenames distinct from nomad-north-desktop-base's own autostart.desktop/
+# autostart (the generic Desktop-icon trust-marking entry) - COPYing to the same
+# destination would silently overwrite that base entry instead of adding to it,
+# leaving every non-Igor icon (Chrome, silx, VS Code, ...) untrusted.
+COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/config/igor-workdir-setup.desktop "${HOME}/.config/autostart/igor-workdir-setup.desktop"
+COPY --chown=${NB_UID}:${NB_GID} src/nomad_north_mpes_igor/north_tools/mpes_igor/config/igor-workdir-setup "${HOME}/.config/autostart/igor-workdir-setup"
 RUN chmod 755 "${HOME}/Desktop/Igor.desktop" \
-    "${HOME}/.config/autostart/autostart.desktop" \
-    "${HOME}/.config/autostart/autostart"
+    "${HOME}/.config/autostart/igor-workdir-setup.desktop" \
+    "${HOME}/.config/autostart/igor-workdir-setup"
 
 WORKDIR "${HOME}"
 

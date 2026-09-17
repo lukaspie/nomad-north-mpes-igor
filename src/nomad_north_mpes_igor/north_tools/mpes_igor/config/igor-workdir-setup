@@ -10,6 +10,8 @@
 ln -s /home/jovyan/work /home/jovyan/.wine/drive_c/users/jovyan/Desktop/work
 ln -s /home/jovyan/uploads /home/jovyan/.wine/drive_c/users/jovyan/Desktop/uploads
 
-# Pre-mark the Igor desktop shortcut as trusted, so double-clicking it doesn't trigger
-# xfce's "untrusted launcher" prompt.
-f=/home/jovyan/Desktop/Igor.desktop; gio set -t string $f metadata::xfce-exe-checksum "$(sha256sum $f | awk '{print $1}')"
+# Trusting the Igor desktop shortcut itself is handled by nomad-north-desktop-base's
+# generic trust-desktop-icons autostart entry (see its own config/), which covers every
+# icon on the Desktop, not just this one - this file must use a name distinct from that
+# base image's own autostart.desktop/autostart, or it silently overwrites it (as happened
+# before), leaving every non-Igor icon (Chrome, silx, VS Code, ...) untrusted again.

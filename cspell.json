@@ -9,7 +9,8 @@
         "venv",
         "__pycache__",
         "dist",
-        "build"
+        "build",
+        "src/nomad_north_mpes_igor/north_tools/mpes_igor/igor_wine"
     ],
   "dictionaryDefinitions": [
     {

@@ -93,7 +93,7 @@ FAIRmat-published image) if you need the image on a machine other than the one y
 
 - To add a default template, procedure files, or similar, mount them into Igor's `User
   Procedures` folder inside the Wine prefix, or modify the startup wiring
-  (`config/autostart`/`config/Igor.desktop`) before rebuilding.
+  (`config/igor-workdir-setup`/`config/Igor.desktop`) before rebuilding.
 - Steps 1-5 only need to be repeated when the Igor installation itself needs to change (a new
   Igor version, a different license). Routine rebuilds of the Dockerfile (picking up Wine
   version bumps, config changes, etc.) can reuse the same `igor_wine/` prefix as-is -- just
