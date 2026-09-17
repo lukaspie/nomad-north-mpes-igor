@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: The nomad-north-mpes-igor Authors
+#
+# This file is part of nomad-north-mpes-igor.
+#
+# SPDX-License-Identifier: MIT
+
 ARG IMAGE_TAG=main
 ARG BASE_IMAGE=ghcr.io/fairmat-nfdi/pynxtools-mpes
 
@@ -17,6 +23,18 @@ RUN dpkg --add-architecture i386 \
  && apt-get update -y \
  && apt-get install -y --install-recommends winehq-staging \
  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Wine prompts interactively to download Wine Mono (needed by some .NET-based
+# installers/apps) the first time it's needed - there's no GUI to click through
+# in a Dockerfile or a headless container, so it has to be pre-placed instead.
+# Version must be kept roughly in step with the wine-staging version installed
+# above; check https://dl.winehq.org/wine/wine-mono/ if this ever needs bumping.
+ARG WINE_MONO_VERSION=11.3.0
+RUN mkdir -p /usr/share/wine/mono \
+ && wget -q -O /tmp/wine-mono.tar.xz \
+      https://dl.winehq.org/wine/wine-mono/${WINE_MONO_VERSION}/wine-mono-${WINE_MONO_VERSION}-x86.tar.xz \
+ && tar -xf /tmp/wine-mono.tar.xz -C /usr/share/wine/mono \
+ && rm /tmp/wine-mono.tar.xz
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER ${NB_UID}

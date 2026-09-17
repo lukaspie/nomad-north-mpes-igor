@@ -1,0 +1,8 @@
+This file is a copyrighted icon resource belonging to WaveMetrics, Inc.,
+extracted from an Igor Pro installation. It is included in this repository
+solely to provide a desktop launcher icon for Igor Pro when built into the
+nomad-north-mpes-igor image by someone holding a valid Igor Pro license.
+
+It is not licensed by WaveMetrics, Inc. for independent redistribution, use
+outside of this context, or any use by parties without a valid Igor Pro
+license. All rights not expressly granted are reserved by WaveMetrics, Inc.

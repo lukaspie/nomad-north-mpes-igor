@@ -98,3 +98,5 @@ FAIRmat-published image) if you need the image on a machine other than the one y
   Igor version, a different license). Routine rebuilds of the Dockerfile (picking up Wine
   version bumps, config changes, etc.) can reuse the same `igor_wine/` prefix as-is -- just
   re-run step 6.
+- Installing a different Igor version changes WaveMetrics' own install folder name (e.g. `Igor Pro 10 Folder` vs. `Igor Pro 9 Folder`). `config/Igor.desktop`'s `Exec=` line only uses `Igor* Folder` so this doesn't need updating on every version bump -- if a future WaveMetrics installer ever names it something that doesn't match that pattern, that line is the one to fix.
+- If the installed `wine-staging` version changes significantly, the pinned `WINE_MONO_VERSION` build arg in the Dockerfile may need bumping too -- check [dl.winehq.org/wine/wine-mono](https://dl.winehq.org/wine/wine-mono/){:target="_blank" rel="noopener"} for the current release if Wine starts prompting for Mono again after a Wine version bump.

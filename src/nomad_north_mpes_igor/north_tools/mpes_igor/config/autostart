@@ -1,4 +1,10 @@
 #!/bin/bash
+# SPDX-FileCopyrightText: The nomad-north-mpes-igor Authors
+#
+# This file is part of nomad-north-mpes-igor.
+#
+# SPDX-License-Identifier: MIT
+
 # Make NOMAD's mounted work/uploads directories reachable from inside the Wine Igor
 # environment (Igor's own file dialogs only see paths under the Wine C: drive).
 ln -s /home/jovyan/work /home/jovyan/.wine/drive_c/users/jovyan/Desktop/work

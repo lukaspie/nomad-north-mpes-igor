@@ -1,0 +1,37 @@
+version = 1
+
+# Non-code project files (docs, CI, tooling config) that can't practically
+# carry an inline header, or whose format doesn't support comments.
+[[annotations]]
+path = [
+  ".cruft.json",
+  ".cspell/custom-dictionary.txt",
+  ".devcontainer/devcontainer.json",
+  ".dockerignore",
+  ".github/**",
+  ".gitignore",
+  ".pre-commit-config.yaml",
+  ".vscode/settings.json",
+  "CITATION.cff",
+  "MANIFEST.in",
+  "README.md",
+  "cspell.json",
+  "mkdocs.yml",
+  "pyproject.toml",
+  "src/nomad_north_mpes_igor/north_tools/mpes_igor/README.md",
+]
+SPDX-FileCopyrightText = "The nomad-north-mpes-igor Authors"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = ["docs/**"]
+SPDX-FileCopyrightText = "The nomad-north-mpes-igor Authors"
+SPDX-License-Identifier = "MIT"
+
+# WaveMetrics' own copyrighted Igor Pro application icon, extracted from an
+# Igor Pro installation - not licensed for independent redistribution. See
+# LICENSES/LicenseRef-WaveMetrics-IgorPro-Icon.txt.
+[[annotations]]
+path = ["src/nomad_north_mpes_igor/north_tools/mpes_igor/config/Igor64.ico"]
+SPDX-FileCopyrightText = "WaveMetrics, Inc."
+SPDX-License-Identifier = "LicenseRef-WaveMetrics-IgorPro-Icon"

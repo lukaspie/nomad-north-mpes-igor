@@ -1,4 +1,10 @@
 #!/bin/bash
+# SPDX-FileCopyrightText: The nomad-north-mpes-igor Authors
+#
+# This file is part of nomad-north-mpes-igor.
+#
+# SPDX-License-Identifier: MIT
+
 set -euo pipefail
 
 project_dir=$(dirname "$(dirname "$(realpath "$0")")")

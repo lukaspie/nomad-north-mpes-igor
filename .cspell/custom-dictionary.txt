@@ -25,4 +25,5 @@ rettigl
 silx
 specsanalyzer
 userspace
+winehq
 zenodo

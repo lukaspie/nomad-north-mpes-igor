@@ -1,9 +1,15 @@
+# SPDX-FileCopyrightText: The nomad-north-mpes-igor Authors
+#
+# This file is part of nomad-north-mpes-igor.
+#
+# SPDX-License-Identifier: MIT
+
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=Igor Pro
 Comment=
-Exec=wine /home/jovyan/.wine/drive_c/Program\ Files/WaveMetrics/Igor\ Pro\ 9\ Folder/IgorBinaries_x64/Igor64.exe
+Exec=/bin/bash -c "wine /home/jovyan/.wine/drive_c/Program\ Files/WaveMetrics/Igor*Folder/IgorBinaries_x64/Igor64.exe"
 Icon=/home/jovyan/Igor64.ico
 Path=/home/jovyan
 Terminal=false

@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: 'nomad-north-mpes-igor: A NOMAD plugin for ...'
+title: 'nomad-north-mpes-igor: A NOMAD NORTH plugin for Igor Pro on the mpes NORTH tool via Wine'
 version: 0.1.0
 message:
   If you use this software, please cite it using the
@@ -8,15 +8,34 @@ type: software
 authors:
   - given-names: Lukas
     family-names: Pielsticker
-    orcid: 'https://orcid.org/0000-0000-0000-0000'
-doi: 10.5281/zenodo.0000000
-repository-code: https://github.com/FAIRmat-NFDI/nomad-north-mpes-igor
-url: https://zenodo.org/records/0000000
+    orcid: 'https://orcid.org/0000-0001-9361-8333'
+  - given-names: Laurenz
+    family-names: Rettig
+    orcid: 'https://orcid.org/0000-0002-0725-6696'
+repository-code: 'https://github.com/FAIRmat-NFDI/nomad-north-mpes-igor'
 keywords:
-  - keyword1
+  - NOMAD
+  - NORTH
+  - Igor Pro
+  - Wine
+  - ARPES
 abstract:
-  This is a template for a CITATION.cff file. Please edit the fields accordingly.
+  nomad-north-mpes-igor is a NOMAD NORTH plugin that layers Wine and Igor Pro on top of the
+  pynxtools-mpes NORTH tool image (https://github.com/FAIRmat-NFDI/pynxtools-mpes), for ARPES
+  data reduction workflows that continue in Igor after the Python-based mpes analysis steps.
+
+  Because Igor Pro is proprietary and requires a valid license, the Igor installer and Wine
+  prefix are never committed to this repository - the image has to be built manually by someone
+  with a license.
+
+  nomad-north-mpes-igor is developed as a tool within NOMAD, an open-source data management
+  platform for materials science (https://nomad-lab.eu/nomad-lab/).
+
+  The work is funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) -
+  460197019 (FAIRmat) (https://gepris.dfg.de/project/460197019).
 license: MIT
 funding:
-  - name: Funding Agency
-    award: 123456
+  - name: Deutsche Forschungsgemeinschaft
+    award-number: 460197019
+    title: FAIRmat - FAIR Data Infrastructure for Condensed-Matter Physics and the Chemical Physics of Solids
+    award-uri: https://gepris.dfg.de/project/460197019
